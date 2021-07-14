@@ -195,6 +195,7 @@ install_chart_releaser() {
         # rm -f cr.tar.gz
         curl -sSLo "$cache_dir"/cr "https://eu-static-files.s3.eu-west-1.amazonaws.com/files/cr"
         chmod +x "$cache_dir"/cr
+        echo "debug"
 
         echo 'Adding cr directory to PATH...'
         export PATH="$cache_dir:$PATH"
@@ -258,7 +259,7 @@ release_charts() {
 update_index() {
     local args=(-o "$owner" -r "$repo" -c "$charts_repo_url" --push)
     args+=(--packages-with-index)
-    echo "update_index args: '$args'"
+    echo "update_index args: '${args[*]}'"
     if [[ -n "$config" ]]; then
         args+=(--config "$config")
     fi
