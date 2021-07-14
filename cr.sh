@@ -257,6 +257,7 @@ release_charts() {
 
 update_index() {
     local args=(-o "$owner" -r "$repo" -c "$charts_repo_url" --push)
+    args+=(--packages-with-index)
     if [[ -n "$config" ]]; then
         args+=(--config "$config")
     fi
